@@ -22,6 +22,12 @@ export default function Home() {
     });
   }, [data]);
 
+  const pageCount = useMemo(() => {
+    if (!data) return 0;
+
+    return Math.ceil(data.count / 10);
+  }, [data]);
+
   return (
     <>
       <div className="grid gap-4 grid-cols-5">
@@ -29,8 +35,16 @@ export default function Home() {
           <StarshipCard key={idx} starship={item} />
         ))}
       </div>
-      <Button onClick={() => setPageIndex(pageIndex - 1)}>Previous</Button>
-      <Button onClick={() => setPageIndex(pageIndex + 1)}>Next</Button>
+      <div className="flex justify-center	my-4">
+        {[...Array(pageCount)].map((_, pageNumber) => (
+          <div key={pageNumber} className="mx-2">
+          <Button onClick={() => setPageIndex(pageNumber + 1)}>
+            {" "}
+            {pageNumber + 1}
+          </Button>
+          </div>
+        ))}
+      </div>
     </>
   );
 }
