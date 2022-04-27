@@ -37,7 +37,7 @@ export default function Home() {
               </Link>
             ))}
           </label>
-          <Rating />
+          <Rating name={item.name} />
         </Card>
       ))}
     </div>

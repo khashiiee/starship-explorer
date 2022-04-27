@@ -1,11 +1,19 @@
 import ReactStars from "react-stars";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 
-function Rating() {
+function Rating({ name }) {
   const [value, setValue] = useState(0);
 
-  const ratingChanged = (newRating) => {
+  useEffect(() => {
+    const localStorageValue = window.localStorage.getItem(name);
+    if (localStorageValue) {
+      setValue(localStorageValue);
+    }
+  }, []);
+
+  const onRatingChange = (newRating) => {
     setValue(newRating);
+    window.localStorage.setItem(name, newRating);
     console.log(newRating);
   };
 
@@ -14,7 +22,7 @@ function Rating() {
       count={5}
       size={24}
       color2={"#ffd700"}
-      onChange={ratingChanged}
+      onChange={onRatingChange}
       value={value}
     />
   );
