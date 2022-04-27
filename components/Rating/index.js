@@ -7,14 +7,13 @@ function Rating({ name }) {
   useEffect(() => {
     const localStorageValue = window.localStorage.getItem(name);
     if (localStorageValue) {
-      setValue(localStorageValue);
+      setValue(Number(localStorageValue));
     }
   }, []);
 
   const onRatingChange = (newRating) => {
     setValue(newRating);
     window.localStorage.setItem(name, newRating);
-    console.log(newRating);
   };
 
   return (

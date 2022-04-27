@@ -1,8 +1,6 @@
 import { useMemo } from "react";
 import useSWR from "swr";
-import Card from "../components/Card";
-import MovieListItem from "../components/MovieListItem";
-import Rating from "../components/Rating";
+import StarshipCard from "../components/StarshipCard";
 
 export default function Home() {
   const { data, error } = useSWR("https://swapi.dev/api/starships");
@@ -22,20 +20,7 @@ export default function Home() {
   return (
     <div className="grid gap-4 grid-cols-5">
       {dataWithMovieIds?.map((item, idx) => (
-        <Card key={idx}>
-          <label> Name : {item.name}</label>
-          <br />
-          <label> Cost : {item.cost_in_credits}</label>
-          <br />
-          <label>
-            {" "}
-            Featured Films :
-            {item.filmIds.map((movieId, idx) => (
-              <MovieListItem key={idx} movieId={movieId} />
-            ))}
-          </label>
-          <Rating name={item.name} />
-        </Card>
+        <StarshipCard key={idx} starship={item}/>
       ))}
     </div>
   );
