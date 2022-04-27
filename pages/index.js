@@ -1,8 +1,7 @@
-import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import useSWR from "swr";
-import Button from "../components/Button";
 import Card from "../components/Card";
+import MovieListItem from "../components/MovieListItem";
 import Rating from "../components/Rating";
 
 export default function Home() {
@@ -32,9 +31,7 @@ export default function Home() {
             {" "}
             Featured Films :
             {item.filmIds.map((movieId, idx) => (
-              <Link href={`/${movieId}`} key={idx}>
-                <Button>{movieId}</Button>
-              </Link>
+              <MovieListItem key={idx} movieId={movieId} />
             ))}
           </label>
           <Rating name={item.name} />
