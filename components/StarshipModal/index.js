@@ -10,25 +10,23 @@ function StarShipModal({ isOpen, setIsOpen, starship }) {
       onClose={() => setIsOpen(false)}
       className="relative z-50 "
     >
-
       <div className="fixed inset-0 bg-black/30 " />
 
       <div className="fixed inset-0 flex items-center justify-center p-4 ">
-
         <Dialog.Panel className="w-full max-w-sm rounded bg-white p-10">
-            <div className="flex justify-end">
-        <Button onClick={() => setIsOpen(false)} >x</Button>
-        </div>
+          <div className="flex justify-end">
+            <Button onClick={() => setIsOpen(false)}>x</Button>
+          </div>
           <Dialog.Title>{starship.name}</Dialog.Title>
           <Dialog.Description>
             <div>Cost : {starship.cost_in_credits}</div>
             <div>
               Featured Films :
               {starship.filmIds.map((movieId, idx) => (
-                  <Link href={"/"+movieId}>
-                      <a>
-                <MovieListItem key={idx} movieId={movieId}  />
-                </a>
+                <Link key={idx} href={"/" + movieId}>
+                  <a>
+                    <MovieListItem movieId={movieId} />
+                  </a>
                 </Link>
               ))}
             </div>

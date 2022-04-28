@@ -19,7 +19,13 @@ function StarshipCard({ starship }) {
           <MovieListItem key={idx} movieId={movieId} />
         ))}
       </label>
-      <Rating name={starship.name} />
+      <div
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
+        <Rating name={starship.name} />
+      </div>
       <StarShipModal
         starship={starship}
         isOpen={isOpen}

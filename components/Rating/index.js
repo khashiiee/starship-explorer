@@ -1,5 +1,5 @@
 import ReactStars from "react-stars";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
 function Rating({ name }) {
   const [value, setValue] = useState(0);
@@ -9,7 +9,7 @@ function Rating({ name }) {
     if (localStorageValue) {
       setValue(Number(localStorageValue));
     }
-  }, []);
+  }, [name]);
 
   const onRatingChange = (newRating) => {
     setValue(newRating);
