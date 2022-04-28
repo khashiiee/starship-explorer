@@ -1,22 +1,30 @@
-import Card from '../Card';
-import MovieListItem from './MovieListItem';
-import Rating from '../Rating';
+import Card from "../Card";
+import MovieListItem from "./MovieListItem";
+import Rating from "../Rating";
+import StarShipModal from "../StarshipModal";
+import { useState } from "react";
 
 function StarshipCard({ starship }) {
+  let [isOpen, setIsOpen] = useState(false);
+
   return (
-    <Card>
+    <Card onClick={() => setIsOpen(true)}>
       <label> Name : {starship.name}</label>
       <br />
       <label> Cost : {starship.cost_in_credits}</label>
       <br />
       <label>
-        {" "}
         Featured Films :
         {starship.filmIds.map((movieId, idx) => (
           <MovieListItem key={idx} movieId={movieId} />
         ))}
       </label>
       <Rating name={starship.name} />
+      <StarShipModal
+        starship={starship}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+      />
     </Card>
   );
 }
