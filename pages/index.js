@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import useSWR from "swr";
 import StarshipCard from "../components/StarshipCard";
 import Button from "../components/Button";
@@ -10,8 +10,13 @@ export default function Home() {
   const [search, setSearch] = useState("");
 
   const { data, error } = useSWR(
-    `https://swapi.dev/api/starships/?page=${pageIndex}`
+    `https://swapi.dev/api/starships/?search=${search}&page=${pageIndex}`
   );
+
+  //reset to first page when the search query is changing
+  useEffect(() => {
+    setPageIndex(1);
+  }, [search]);
 
   const dataWithMovieIds = useMemo(() => {
     if (!data) return null;
