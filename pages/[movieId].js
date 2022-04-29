@@ -10,7 +10,11 @@ function MoviePage(props) {
   );
 
   if (error) {
-    return <div className="text-center">We ran into an error while loading this page.</div>;
+    return (
+      <div className="text-center">
+        We ran into an error while loading this page.
+      </div>
+    );
   }
 
   return (

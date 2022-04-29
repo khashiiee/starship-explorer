@@ -2,4 +2,4 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'react-loading-skeleton/dist/skeleton.css'
+@import "react-loading-skeleton/dist/skeleton.css";

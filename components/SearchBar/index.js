@@ -1,9 +1,14 @@
 import Input from "../Input";
 
-function SearchBar({value,onChange}) {
+function SearchBar({ value, onChange }) {
   return (
     <div className="flex justify-center	my-4">
-     <Input type="text" placeholder="Search .. " value={value} onChange={onChange}/>
+      <Input
+        type="text"
+        placeholder="Search .. "
+        value={value}
+        onChange={onChange}
+      />
     </div>
   );
 }
