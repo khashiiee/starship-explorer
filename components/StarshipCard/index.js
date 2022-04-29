@@ -27,7 +27,7 @@ function StarshipCard({ starship }) {
               ))}
             </ul>
             {!starship &&
-              [...Array(2)].map((movieId, idx) => <Skeleton width={100} />)}
+              [...Array(2)].map((_, key) => <Skeleton key={key} width={100} />)}
           </div>
         </div>
         <div
