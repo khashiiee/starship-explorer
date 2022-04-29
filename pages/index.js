@@ -3,6 +3,7 @@ import useSWR from "swr";
 import StarshipCard from "../components/StarshipCard";
 import Button from "../components/Button";
 import SearchBar from "../components/SearchBar";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 export default function Home() {
   const [pageIndex, setPageIndex] = useState(1);
@@ -43,10 +44,18 @@ export default function Home() {
         {dataWithMovieIds?.map((item, idx) => (
           <StarshipCard key={idx} starship={item} />
         ))}
+
+        <SkeletonTheme baseColor="#a5b4fc" highlightColor="#c084fc">
+          {!dataWithMovieIds &&
+            [...Array(10)].map((_, key) => <StarshipCard key={key} />)}
+        </SkeletonTheme>
       </div>
       <div className="flex justify-center	my-4">
         {[...Array(pageCount)].map((_, pageNumber) => (
-          <div key={pageNumber} className="mx-1 bg-white rounded-lg shadow hover:bg-slate-200">
+          <div
+            key={pageNumber}
+            className="mx-1 bg-white rounded-lg shadow hover:bg-slate-200"
+          >
             <Button onClick={() => setPageIndex(pageNumber + 1)}>
               {" "}
               {pageNumber + 1}
