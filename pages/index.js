@@ -46,7 +46,7 @@ export default function Home() {
       </div>
       <div className="flex justify-center	my-4">
         {[...Array(pageCount)].map((_, pageNumber) => (
-          <div key={pageNumber} className="mx-2">
+          <div key={pageNumber} className="mx-1 bg-white rounded-lg shadow hover:bg-slate-200">
             <Button onClick={() => setPageIndex(pageNumber + 1)}>
               {" "}
               {pageNumber + 1}

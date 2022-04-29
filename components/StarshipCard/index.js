@@ -9,22 +9,25 @@ function StarshipCard({ starship }) {
 
   return (
     <Card onClick={() => setIsOpen(true)}>
-      <label> Name : {starship.name}</label>
-      <br />
-      <label> Cost : {starship.cost_in_credits}</label>
-      <br />
-      <label>
-        Featured Films :
-        {starship.filmIds.map((movieId, idx) => (
-          <MovieListItem key={idx} movieId={movieId} />
-        ))}
-      </label>
-      <div
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-      >
-        <Rating name={starship.name} />
+      <div className="p-4">
+        <h3 className="font-semibold">{starship.name}</h3>
+
+        <div className="text-sm">
+          <div>Cost: {starship.cost_in_credits}</div>
+          <div className="py-2">
+            Featured Films :
+            {starship.filmIds.map((movieId, idx) => (
+              <MovieListItem key={idx} movieId={movieId} />
+            ))}
+          </div>
+        </div>
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
+          <Rating name={starship.name} />
+        </div>
       </div>
       <StarShipModal
         starship={starship}

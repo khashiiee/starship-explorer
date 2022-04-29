@@ -12,28 +12,31 @@ function StarShipModal({ isOpen, setIsOpen, starship }) {
     >
       <div className="fixed inset-0 bg-black/30 " />
 
-      <div className="fixed inset-0 flex items-center justify-center p-4 ">
-        <Dialog.Panel className="w-full max-w-sm rounded bg-white p-10">
-          <div className="flex justify-end">
+      <div className="fixed inset-0 flex items-center justify-center">
+        <Dialog.Panel className="w-full max-w-sm rounded bg-white p-4">
+          <div className="flex justify-between items-center mb-4">
+            <Dialog.Title className="font-bold text-lg">
+              {starship.name}
+            </Dialog.Title>
             <Button onClick={() => setIsOpen(false)}>x</Button>
           </div>
-          <Dialog.Title>{starship.name}</Dialog.Title>
+
           <Dialog.Description>
-            <div>Cost : {starship.cost_in_credits}</div>
-            <div>
-              Featured Films :
+            <div>Cost: {starship.cost_in_credits}</div>
+            <div>Length: {starship.length}</div>
+            <div>Max Atmospheric Speed: {starship.max_atmosphering_speed}</div>
+            <div>Crew: {starship.crew}</div>
+
+            <div className="my-2">
+              Featured Films:
               {starship.filmIds.map((movieId, idx) => (
                 <Link key={idx} href={"/" + movieId}>
-                  <a>
+                  <a className="text-blue-600 hover:text-blue-800 hover:underline">
                     <MovieListItem movieId={movieId} />
                   </a>
                 </Link>
               ))}
             </div>
-            <div>Length : {starship.length}</div>
-            <div>Max Atmospheric Speed : {starship.max_atmosphering_speed}</div>
-
-            <div>Crew : {starship.crew}</div>
           </Dialog.Description>
         </Dialog.Panel>
       </div>

@@ -11,14 +11,20 @@ function MoviePage(props) {
   if (!data) return null;
 
   return (
-    <div>
-      <h1 className="text-2xl	my-8">{data.title}</h1>
-      <div>Episode ID: {data.episode_id}</div>
-      <div>Opening Crawl: {data.opening_crawl}</div>
-      <div>Director: {data.director}</div>
-      <div>Producer: {data.producer}</div>
+    <div className="max-w-lg mx-auto bg-white border shadow text-center p-4">
+      <h1 className="text-2xl	mb-8">
+        #{data.episode_id}: {data.title}
+      </h1>
+      <div className="mb-6">{data.opening_crawl}</div>
       <div>
-        Release Date: {data.release_date.split("-").reverse().join("/")}
+        <em>Director:</em> {data.director}
+      </div>
+      <div>
+        <em>Producer:</em> {data.producer}
+      </div>
+      <div>
+        <em>Release Date:</em>{" "}
+        {data.release_date.split("-").reverse().join("/")}
       </div>
     </div>
   );

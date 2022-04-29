@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SWRConfig } from "swr";
 import Header from "../components/Header";
 import "../styles/globals.css";
@@ -12,7 +13,11 @@ function MyApp({ Component, pageProps }) {
       }}
     >
       <div className="container mx-auto">
-        <Header></Header>
+        <Link href={"/"}>
+          <a>
+            <Header />
+          </a>
+        </Link>
         <Component {...pageProps} />
       </div>
     </SWRConfig>
