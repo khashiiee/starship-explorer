@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
 import Skeleton from "react-loading-skeleton";
 import useSWR from "swr";
@@ -23,6 +24,9 @@ function MoviePage(props) {
         <Skeleton count={15} />
       ) : (
         <>
+          <Head>
+            <title>{data.title}: Starship Explorer - Star Wars</title>
+          </Head>
           <h1 className="text-2xl	mb-8">
             #{data.episode_id}: {data.title}
           </h1>

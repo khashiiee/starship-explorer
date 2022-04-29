@@ -4,6 +4,7 @@ import StarshipCard from "../components/StarshipCard";
 import Button from "../components/Button";
 import SearchBar from "../components/SearchBar";
 import { SkeletonTheme } from "react-loading-skeleton";
+import Head from "next/head";
 
 export default function Home() {
   const [pageIndex, setPageIndex] = useState(1);
@@ -39,6 +40,9 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>Starship Explorer - Star Wars</title>
+      </Head>
       <SearchBar value={search} onChange={(e) => setSearch(e.target.value)} />
       <div className="grid gap-4 grid-cols-5">
         {dataWithMovieIds?.map((item, idx) => (
